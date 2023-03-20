@@ -1,7 +1,7 @@
 # Just a test
 
 import requests
-from beautifulsoup4 import BeautifulSoup
+from bs4 import BeautifulSoup
 import streamlit as st
 
 
