@@ -5,8 +5,7 @@ from bs4 import BeautifulSoup
 import streamlit as st
 
 
-url = st.text_input("Paste your inews url here please", value="inews url", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
-
+url = st.text_input("Paste your inews url here please", "inews url")
 
 
 response = requests.get(url)
