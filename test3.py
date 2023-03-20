@@ -5,7 +5,11 @@ from bs4 import BeautifulSoup
 import streamlit as st
 
 
-response = requests.get("https://inews.co.uk/news/health/junior-doctors-strike-when-dates-march-2023-strikes-nhs-services-affected-2162373")
+url = st.text_input("Paste your inews url here please", value="inews url", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+
+
+
+response = requests.get(url)
 webpage = response.content
 soup = BeautifulSoup(webpage, "html.parser")
 
