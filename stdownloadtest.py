@@ -148,7 +148,7 @@ st.download_button(
     mime='text/csv',
 )
 
-st.balloons()
+# st.balloons()
 
 # if st.download_button(...):
 #    st.write('Thanks for downloading!')
