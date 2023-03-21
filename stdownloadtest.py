@@ -31,7 +31,6 @@ def bearer_oauth(r):
 url = st.text_input("Paste the tweet url here. Please do not include the ? or anything after it.", "plain tweet url")
 
 if url:
-
     tweet_id = url.split("status")[1][1:] 
 
     token=0
