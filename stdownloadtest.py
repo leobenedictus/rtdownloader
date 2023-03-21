@@ -11,7 +11,7 @@ import time
 
 # # This is my bearer token from my Twitter dev account
 
-# bearer_token = os.environ.get("BEARER_TOKEN")
+bearer_token = bearer_token
 
 # This formats it into something that I don't quite understand, but which seems to make Twitter's API happy. (What is the "r" in the function doing?)
 def bearer_oauth(r):
