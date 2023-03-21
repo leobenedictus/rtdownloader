@@ -22,4 +22,4 @@ article = copy_mess
 
 st.title(headline)
 st.header(standfirst)
-st.markdown(copy) 
+st.markdown(copy, unsafe_allow_html=True) 
