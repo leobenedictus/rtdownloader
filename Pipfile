@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 beautifulsoup4 = "*"
+pandas = "*"
+openai = "*"
+moviepy = "*"
 
 [dev-packages]
 ipykernel = "*"
