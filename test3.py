@@ -7,9 +7,12 @@ import streamlit as st
 
 url = st.text_input("Paste your inews url here please", "inews url")
 
-st.write(url)
+
 
 response = requests.get("https://inews.co.uk/news/politics/boris-johnson-plots-comeback-if-cleared-partygate-inquiry-2222500")
+
+st.write(response)
+
 webpage = response.content
 soup = BeautifulSoup(webpage, "html.parser")
 
