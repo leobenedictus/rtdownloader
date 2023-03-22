@@ -30,6 +30,9 @@ def bearer_oauth(r):
 # tweet url needs to have the id number at the end (you can see this url by clicking on the date of the tweet)
 url = st.text_input("Paste the tweet url here. Please do not include the ? or anything after it.", "plain tweet url")
 
+while ".com" not in url:
+     continue
+
 tweet_id = url.split("status")[1][1:] 
 
 token=0
