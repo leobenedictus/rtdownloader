@@ -33,6 +33,12 @@ sleep_time = 0
 # tweet url needs to have the id number at the end (you can see this url by clicking on the date of the tweet)
 url = st.text_input("Paste the tweet url here. Please do not include the ? or anything after it.", "plain tweet url")
 
+slow_mode = st.checkbox('Tick to go slow if the tweet has more than roughly 7,000 retweets altogether')
+
+if slow_mode:
+    st.write('Set to slow. The more retweets there are, the longer it takes. Check back every few minutes. 10,000 retweets can take half an hour or more.')
+    sleep_time = 15
+
 while ".com" not in url:
      continue
 
