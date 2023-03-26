@@ -27,11 +27,12 @@ def bearer_oauth(r):
 
 # WARNING
 
-st.header("This delivers a csv list of retweeter and quote-tweeters combined. A quote tweet does not necessarily mean approval. You must check before saying otherwise.")
+st.header("Remember: some quote-tweets may be disagreements. Please check before using.")
 
 # tweet url needs to have the id number at the end (you can see this url by clicking on the date of the tweet)
 url = st.text_input("Paste the tweet url here. Do not include the ? or anything after it.", "plain tweet url")
 
+st.write("Message Leo if you have any problems, questions or ideas.")
 
 # Sets sleep time, fast = 0, slow = 15
 sleep_time = 0
