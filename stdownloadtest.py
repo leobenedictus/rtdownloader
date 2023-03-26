@@ -25,6 +25,9 @@ def bearer_oauth(r):
     return r
 
 
+# Sets sleep time, fast = 0, slow = 15
+sleep_time = 0
+
 # This is the bit that does the work
 
 # tweet url needs to have the id number at the end (you can see this url by clicking on the date of the tweet)
@@ -35,6 +38,8 @@ while ".com" not in url:
 
 tweet_id = url.split("status")[1][1:] 
 
+st.write("Collecting retweets!")
+
 token=0
 
 payload1 = {'user.fields': 'verified,public_metrics,description,location,entities', 'tweet.fields': 'author_id,created_at,geo,context_annotations,non_public_metrics,organic_metrics', "max_results":"100"} 
@@ -44,7 +49,8 @@ response = requests.request("GET", f"https://api.twitter.com/2/tweets/{tweet_id}
 print(response)
 # print(response.json())
 result_count = response.json()["meta"]["result_count"]
-print(result_count)
+# print(result_count)
+st.write(result_count)
 if result_count == 0:
     print("done!")
     data = response.json()["data"]
@@ -56,12 +62,13 @@ else:
 while result_count != 0:
         payload2 = {"pagination_token":token, 'user.fields': 'verified,public_metrics,description,location,entities', 'tweet.fields': 'author_id,created_at,geo,context_annotations,non_public_metrics,organic_metrics', "max_results":"100"}
         # remove the next line if there are fewer than 7,000ish retweets and you want it to speed up
-        time.sleep(15)
+        time.sleep(sleep_time)
         response = requests.request("GET", f"https://api.twitter.com/2/tweets/{tweet_id}/retweeted_by", 
                                 auth=bearer_oauth, params=payload2)
         print(response)
         result_count = response.json()["meta"]["result_count"]
-        print(result_count)
+        # print(result_count)
+        st.write(result_count)
         if result_count == 0:
             print("done!")
         else:
@@ -79,6 +86,9 @@ while result_count != 0:
 # url = "https://twitter.com/profnfenton/status/1558140271694585858"
 # tweet_id = url.split("status")[1][1:] 
 
+
+st.write("Now collecting quote tweets!")
+
 token=0
 
 payload1 = {"expansions": "author_id", 'user.fields': 'verified,public_metrics,description,location,entities', 'tweet.fields': 'id,text,author_id,created_at,geo', "max_results":"100"} 
@@ -88,7 +98,8 @@ response = requests.request("GET", f"https://api.twitter.com/2/tweets/{tweet_id}
 print(response)
 # print(response.json())
 result_count = response.json()["meta"]["result_count"]
-print(result_count)
+# print(result_count)
+st.write(result_count)
 if "next_token" not in response.json()["meta"]:
     print("done!")
     q_data = response.json()["data"]
@@ -107,7 +118,8 @@ while "next_token" in response.json()["meta"]:
                                 auth=bearer_oauth, params=payload2)
         print(response)
         result_count = response.json()["meta"]["result_count"]
-        print(result_count)
+        # print(result_count)
+        st.write(result_count)
         if "next_token" in response.json()["meta"]:
             data_list = response.json()["data"]
             includes_list = response.json()["includes"]["users"]
