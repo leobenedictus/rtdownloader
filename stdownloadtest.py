@@ -25,26 +25,32 @@ def bearer_oauth(r):
     return r
 
 
+# WARNING
+
+st.header("This delivers a csv list of retweeter and quote-tweeters combined. A quote tweet does not necessarily mean approval. You must check before saying otherwise.")
+
+# tweet url needs to have the id number at the end (you can see this url by clicking on the date of the tweet)
+url = st.text_input("Paste the tweet url here. Do not include the ? or anything after it.", "plain tweet url")
+
+
 # Sets sleep time, fast = 0, slow = 15
 sleep_time = 0
 
-# This is the bit that does the work
-
-# tweet url needs to have the id number at the end (you can see this url by clicking on the date of the tweet)
-url = st.text_input("Paste the tweet url here. Please do not include the ? or anything after it.", "plain tweet url")
-
-slow_mode = st.checkbox('Tick to go slow if the tweet has more than roughly 7,000 retweets altogether')
+slow_mode = st.checkbox('Tick to go slow if the tweet has more than about 7,000 retweets in total', help="Twitter's API won't allow itself to be swamped, so if we try to go too fast and demand too much, it's designed to break")
 
 if slow_mode:
-    st.write('Set to slow. The more retweets there are, the longer it takes. Check back every few minutes. 10,000 retweets can take half an hour or more.')
+    st.write('Set to slow mode. The more retweets there are, the longer this will take. Check back every few minutes. 10,000 retweets can take half an hour or more.')
     sleep_time = 15
 
-while ".com" not in url:
+# Waits for an input with a tweet 
+while "twitter.com" not in url:
      continue
+
+# This is the bit that does the work
 
 tweet_id = url.split("status")[1][1:] 
 
-st.write("Collecting retweets!")
+st.write("Collecting retweets...")
 
 token=0
 
@@ -93,7 +99,7 @@ while result_count != 0:
 # tweet_id = url.split("status")[1][1:] 
 
 
-st.write("Now collecting quote tweets!")
+st.write("Now collecting quote tweets...")
 
 token=0
 
@@ -154,6 +160,8 @@ df.sort_values(by=["followers"], inplace=True, ascending=False)
 
 
 # df = pd.read_csv("q_re_tweets1635577217789878278.csv")
+
+st.write("Just wait a moment. Your data is coming.")
 
 @st.cache_data
 def convert_df(df):
