@@ -178,6 +178,10 @@ st.download_button(
     mime='text/csv',
 )
 
+st.write("Fun fact: The long number in the file name is the tweet id. If you paste it after twitter.com/anyone/status/ it'll take you back to the original tweet!")
+
+st.balloons()
+
 # st.balloons()
 
 # if st.download_button(...):
