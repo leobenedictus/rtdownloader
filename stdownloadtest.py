@@ -30,7 +30,7 @@ def bearer_oauth(r):
 st.header("Remember: some quote-tweets may be disagreements. Please check before using.")
 
 # tweet url needs to have the id number at the end (you can see this url by clicking on the date of the tweet)
-url = st.text_input("Paste the tweet url here. Do not include the ? or anything after it.", "plain tweet url")
+url = st.text_input("", "Plain tweet url goes here. Do not include the ? or anything after it.")
 
 st.write("Message Leo if you have any problems, questions or ideas.")
 
