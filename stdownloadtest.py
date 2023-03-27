@@ -27,12 +27,12 @@ def bearer_oauth(r):
 
 # WARNING
 
-st.header("Remember: some quote-tweets may be disagreements. Please check before using.")
+st.header("Retweet downloader")
 
 # tweet url needs to have the id number at the end (you can see this url by clicking on the date of the tweet)
-url = st.text_input("plain tweet id, no ? stuff at the end please", "")
+url = st.text_input("", "plain tweet url")
 
-st.write("Message Leo if you have any problems, questions or ideas.")
+st.write("Remember: some quote-tweets may be disagreements. Please check before using. The app needs a plain tweet id, something like 'twitter.com/FullFact/status/1639942774223953920' without the ? and anything that follows at the end.")
 
 # Sets sleep time, fast = 0, slow = 15
 sleep_time = 0
