@@ -126,7 +126,7 @@ else:
 while "next_token" in response.json()["meta"]:
         payload2 = {"pagination_token":token, "expansions": "author_id", 'user.fields': 'verified,public_metrics,description,location,entities', 'tweet.fields': 'id,text,author_id,created_at,geo', "max_results":"100"}
         # remove the next line if there are fewer than 7,000ish retweets and you want it to speed up
-        time.sleep(15)
+        time.sleep(sleep_time)
         response = requests.request("GET", f"https://api.twitter.com/2/tweets/{tweet_id}/quote_tweets", 
                                 auth=bearer_oauth, params=payload2)
         print(response)
